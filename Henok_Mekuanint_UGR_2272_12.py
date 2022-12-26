@@ -1,306 +1,315 @@
-import turtle
-import datetime
-from turtle import Screen
+#function that merges
+import random
+num_list=[0,1]
+num1=random.choice((0,2))
+num2=random.choice((0,2))
+num3=random.choice((0,2))
+num4=random.choice((0,2))
+num5=random.choice((0,2))
+num6=random.choice((0,2))
+num7=random.choice((0,2))
+num8=random.choice((0,2))
+num9=random.choice((0,2))
+num10=random.choice((0,2))
+num11=random.choice((0,2))
+num12=random.choice((0,2))
+num13=random.choice((0,2))
+num14=random.choice((0,2))
+num15=random.choice((0,2))
+num16=random.choice((0,2))
+store1=[num1,num2,num3,num4]
+store2=[num5,num6,num7,num8]
+store3=[num9,num10,num11,num12]
+store4=[num13,num14,num15,num16]
+store=[]
+print(store1,"                            A ---FOR  LEFT SHIFT")
+print(store2,"                            D ---FOR RIGHT SHIFT")
+print(store3,"                            W ---FOR UP SHIFT")
+print(store4,"                            S ---FOR DOWN SHIFT and               press C TO LEAVE THE GAME")
+button=1
+while True:
+    button = input("PLEASE ENTER THE ABOVE BUTTON TO PLAY THE GAME:")
+    if button == 'A' or button == 'a':
+        def merge(row):
+            def single_column_or_row_merger(array1):
+                array2 = []
+                i = 0
+                while (i < len(array1)):
+                    if array1[i] != 0:
+                        array2.append(array1[i])
+                    i += 1
+                if (len(array2) < len(array1)):
+                    array2.extend([0] * (len(array1) - len(array2)))
+                return array2
 
-# the background
-turtle.bgcolor("silver")
-turtle.speed(50)
-turtle.hideturtle()
-animation=Screen()
+            def add_tiles(array1):
+                i = 0
+                while (i < (len(array1) - 1)):
+                    while (array1[i] == array1[i + 1]):
+                        array1[i] = array1[i] * 2
+                        array1[i + 1] = 0
+                        break
+                    i = i + 1
+                return array1
 
-#the box
-box=turtle.Turtle()
-box.speed(50)
-box.hideturtle()
-box.penup()
-box.goto(0,-250)
-box.pendown()
-box.fillcolor("#030303")
-box.begin_fill()
-box.forward(250)
-box.left(90)
-box.forward(500)
-box.left(90)
-box.forward(500)
-box.left(90)
-box.forward(500)
-box.left(90)
-box.forward(250)
-box.end_fill()
-
-#filling the circle with color
-turtle.penup()
-turtle.goto(0,-200)
-turtle.pendown()
-turtle.hideturtle()
-turtle.fillcolor("#141414")
-turtle.begin_fill()
-turtle.circle(200)
-turtle.end_fill()
-
-#the border circle
-border=turtle.Turtle()
-border.speed(50)
-border.pensize(15)
-border.penup()
-border.goto(0,-200)
-border.pendown()
-border.color("brown")
-border.circle(200)
-#the hour lines on the clock
-arrow1=turtle.Turtle()
-arrow1.speed(50)
-arrow1.hideturtle()
-arrow1.color("blue")
-arrow1.width(5)
-arrow1.right(270)
-i=12
-while i>=1:
-    arrow1.penup()
-    arrow1.forward(150)
-    arrow1.pendown()
-    arrow1.forward(50)
-    arrow1.penup()
-    arrow1.goto(0,0)
-    arrow1.left(30)
-    arrow1.pendown()
-    arrow1.color("blue")
-    i-=1
-#the minute pointer
-i=0
-arrow2=turtle.Turtle()
-arrow2.hideturtle()
-arrow2.speed(200)
-arrow2.color("blue")
-arrow2.width(3)
-while i<60:
-    arrow2.penup()
-    arrow2.forward(170)
-    arrow2.pendown()
-    arrow2.forward(30)
-    arrow2.penup()
-    arrow2.goto(0,0)
-    arrow2.left(6)
-
-    i+=1
-
-#the numbers on the clock
-num=turtle.Turtle()
-num.speed(50)
-num.hideturtle()
-num.penup()
-num.goto(-15,120)
-num.pendown()
-num.color("orange")
-num.write("12", font=("Times New Roman",30, "bold"))
-
-num.penup()
-num.goto(60,100)
-num.pendown()
-num.color("orange")
-num.write("1", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(115,50)
-num.pendown()
-num.color("orange")
-num.write("2", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(130,-20)
-num.pendown()
-num.color("orange")
-num.write("3", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(110,-90)
-num.pendown()
-num.color("orange")
-num.write("4", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(60,-135)
-num.pendown()
-num.color("orange")
-num.write("5", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(-10,-155)
-num.pendown()
-num.color("orange")
-num.write("6", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(-70,-140)
-num.pendown()
-num.color("orange")
-num.write("7", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(-125,-95)
-num.pendown()
-num.color("orange")
-num.write("8", font=("Times New Roman", 30, "bold"))
+            tile1 = single_column_or_row_merger(row)
+            tile2 = add_tiles(tile1)
+            tile3 = single_column_or_row_merger(tile2)
+            return tile3
 
 
-num.penup()
-num.goto(-150,-20)
-num.pendown()
-num.color("orange")
-num.write("9", font=("Times New Roman", 30, "bold"))
+        store1 = merge(store1)
+        store2 = merge(store2)
+        store3 = merge(store3)
+        store4 = merge(store4)
 
-num.penup()
-num.goto(-145,35)
-num.pendown()
-num.color("orange")
-num.write("10", font=("Times New Roman", 30, "bold"))
-
-num.penup()
-num.goto(-95,100)
-num.pendown()
-num.color("orange")
-num.write("11", font=("Times New Roman", 30, "bold"))
-
-#geez numbers
-num=turtle.Turtle()
-num.speed(100)
-num.hideturtle()
-num.penup()
-num.goto(-15,215)
-num.pendown()
-num.color("orange")
-num.write("፲፪", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(110,175)
-num.pendown()
-num.color("orange")
-num.write("፩", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(180,105)
-num.pendown()
-num.color("orange")
-num.write("፪", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(210,-20)
-num.pendown()
-num.color("orange")
-num.write("፫", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(180,-130)
-num.pendown()
-num.color("orange")
-num.write("፬", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(110,-210)
-num.pendown()
-num.color("orange")
-num.write("፭", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(-10,-240)
-num.pendown()
-num.color("orange")
-num.write("፮", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(-120,-210)
-num.pendown()
-num.color("orange")
-num.write("፯", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(-200,-130)
-num.pendown()
-num.color("orange")
-num.write("፰", font=("Times New Roman", 20, "bold"))
+        for i in range(0,3):
+            if store1[i]==0:
+                store1[i]=2
+                print("new 2 generated on first row",i,"index")
+                break
+            if store2[i]==0:
+                store2[i]=2
+                print("new 2 generated on second row", i, "index")
+                break
+            if store3[i]==0:
+                store3[i]=2
+                print("new 2 generated on third row", i, "index")
+                break
+            if store4[i]==0:
+                store4[i]=2
+                print("new 2 generated on fourth row", i, "index")
 
 
-num.penup()
-num.goto(-225,-20)
-num.pendown()
-num.color("orange")
-num.write("፱", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(-200,100)
-num.pendown()
-num.color("orange")
-num.write("፲", font=("Times New Roman", 20, "bold"))
-
-num.penup()
-num.goto(-130,180)
-num.pendown()
-num.color("orange")
-num.write("፲፩", font=("Times New Roman", 20, "bold"))
-
-def revolution_of_hour():
-   chour= datetime.datetime.now().hour
-   revolvment = chour*-30+450
-   cminute= datetime.datetime.now().minute
-   revolvment = revolvment + (-1* cminute)/2
-   hour.setheading(revolvment)
-   animation.ontimer(revolution_of_hour, 60000)
-
-#moving the minute using function
-def revolution_of_minute():
-    cminute= datetime.datetime.now().minute
-    revolvment = cminute*-6+90
-    csecond= datetime.datetime.now().second
-    revolvment = revolvment + (csecond)*(-1/10)
-    minute.setheading(revolvment)
-    animation.ontimer(revolution_of_minute, 1000)
-
-#moving the second using function
-def revolution_of_second():
-    csecond= datetime.datetime.now().second
-    revolvment = csecond*-6+90
-    second.setheading(revolvment)
-    animation.ontimer(revolution_of_second, 1000)
-
-#the hour pointer
-hour=turtle.Turtle()
-hour.shape("arrow")
-hour.speed(50)
-hour.color("green")
-hour.shapesize(stretch_wid=0.4, stretch_len=5)
 
 
-#the minute pointer
-minute =turtle.Turtle()
-minute.shape("arrow")
-minute.speed(50)
-minute.color("yellow")
-minute.shapesize(stretch_wid=0.2, stretch_len=13)
+        print((store1), "                            A ---FOR  LEFT SHIFT")
+        print((store2), "                            D ---FOR RIGHT SHIFT")
+        print((store3), "                            W ---FOR UP SHIFT")
+        print((store4), "                            S ---FOR DOWN SHIFT AND           PRESS C TO LEAVE THE GAME")
 
 
-#the second pointer
-second = turtle.Turtle()
-second.shape("arrow")
-second.speed(50)
-second.color("red")
-second.shapesize(stretch_wid=0.1,stretch_len=18)
+    if button == 'd' or button == 'D':
+        def merge_right(row):
+            def row_merger(array1):
+                array2 = []
+                i = len(array1) - 1
+                while (i >= 0):
+                    if array1[i] != 0:
+                        array2.insert(i, array1[i])
+                    i -= 1
+                d = len(array1) - len(array2)
+                i = 0
+                while (i < d):
+                    array2.insert(i, 0)
+                    i += 1
+                return array2
+
+            def add_tiles(array1):
+                i = 0
+                while (i < (len(array1) - 1)):
+                    while (array1[i] == array1[i + 1]):
+                        array1[i] = array1[i] * 2
+                        array1[i + 1] = 0
+                        break
+                    i = i + 1
+                return array1
+
+            tile1 = row_merger(row)
+            tile2 = add_tiles(tile1)
+            tile3 = row_merger(tile2)
+            return tile3
 
 
-#the mini circle
-mini=turtle.Turtle()
-mini.speed(50)
-mini.hideturtle()
-mini.penup()
-mini.goto(0,-5)
-mini.hideturtle()
-mini.pendown()
-mini.fillcolor("brown")
-mini.begin_fill()
-mini.circle(5)
-mini.end_fill()
+        store1 = merge_right(store1)
+        store2 = merge_right(store2)
+        store3 = merge_right(store3)
+        store4 = merge_right(store4)
+        for i in range(0,3):
+            if store1[i] == 0:
+                store1[i] = 2
+                print("new 2 generated on first row", i, "index")
+                break
 
-animation.ontimer(revolution_of_hour,1)
-animation.ontimer(revolution_of_minute,1)
-animation.ontimer(revolution_of_second,1)
-animation.exitonclick()
-turtle.done()
+            if store2[i]==0:
+                store2[i]=2
+                print("new 2 generated on second row", i, "index")
+                break
+            if store3[i]==0:
+                store3[i]=2
+                print("new 2 generated on third row", i, "index")
+                break
+            if store4[i]==0:
+                store4[i]=2
+                print("new 2 generated on fourth row", i, "index")
+        print((store1), "                            A ---FOR  LEFT SHIFT")
+        print((store2), "                            D ---FOR RIGHT SHIFT")
+        print((store3), "                            W ---FOR UP SHIFT")
+        print((store4), "                            S ---FOR DOWN SHIFT              PRESS C LEAVE THE GAME")
+
+
+
+    if button == 'w' or button == "W":
+        store_a = [store1[0],store2[0],store3[0],store4[0]]
+        store_b = [store1[1],store2[1],store3[1],store4[1]]
+        store_c = [store1[2],store2[2],store3[2],store4[2]]
+        store_d = [store1[3],store2[3],store3[3],store4[3]]
+
+
+        def merge(row):
+            def single_column_or_row_merger(array1):
+                array2 = []
+                i = 0
+                while (i < len(array1)):
+                    if array1[i] != 0:
+                        array2.append(array1[i])
+                    i += 1
+                if (len(array2) < len(array1)):
+                    array2.extend([0] * (len(array1) - len(array2)))
+                return array2
+
+            def add_tiles(array1):
+                i = 0
+                while (i < (len(array1) - 1)):
+                    while (array1[i] == array1[i + 1]):
+                        array1[i] = array1[i] * 2
+                        array1[i + 1] = 0
+                        break
+                    i = i + 1
+                return array1
+
+            tile1 = single_column_or_row_merger(row)
+            tile2 = add_tiles(tile1)
+            tile3 = single_column_or_row_merger(tile2)
+            return tile3
+
+
+        storeha = merge(store_a)
+        storehu = merge(store_b)
+        storehi = merge(store_c)
+        storehe = merge((store_d))
+        store1[0] = storeha[0]
+        store2[0] = storeha[1]
+        store3[0] = storeha[2]
+        store4[0] = storeha[3]
+
+        store1[1] = storehu[0]
+        store2[1] = storehu[1]
+        store3[1] = storehu[2]
+        store4[1] = storehu[3]
+
+        store1[2] = storehi[0]
+        store2[2] = storehi[1]
+        store3[2] = storehi[2]
+        store4[2] = storehi[3]
+
+        store1[3] = storehe[0]
+        store2[3] = storehe[1]
+        store3[3] = storehe[2]
+        store4[3] = storehe[3]
+
+        for i in range(0,3):
+            if store1[i]==0:
+                store1[i]=2
+                print("new 2 generated on first row",i,"index")
+                break
+            if store2[i]==0:
+                store2[i]=2
+                print("new 2 generated on second row", i, "index")
+                break
+            if store3[i]==0:
+                store3[i]=2
+                print("new 2 generated on third row", i, "index")
+                break
+            if store4[i]==0:
+                store4[i]=2
+                print("new 2 generated on fourth row", i, "index")
+
+        print(store1, "                            A ---FOR  LEFT SHIFT")
+        print(store2, "                            D ---FOR RIGHT SHIFT")
+        print(store3, "                            W ---FOR UP SHIFT")
+        print(store4, "                            S ---FOR DOWN SHIFT                     PRESS C TO LEAVE THE GAME")
+
+
+    if button == "s" or button == "S":
+        store_a = [store1[0], store2[0], store3[0], store4[0]]
+        store_b = [store1[1], store2[1], store3[1], store4[1]]
+        store_c = [store1[2], store2[2], store3[2], store4[2]]
+        store_d = [store1[3], store2[3], store3[3], store4[3]]
+
+
+        def merge_right(row):
+            def row_merger(array1):
+                array2 = []
+                i = len(array1) - 1
+                while (i >= 0):
+                    if array1[i] != 0:
+                        array2.insert(i, array1[i])
+                    i -= 1
+                d = len(array1) - len(array2)
+                i = 0
+                while (i < d):
+                    array2.insert(i, 0)
+                    i += 1
+                return array2
+
+            def add_tiles(array1):
+                i = 0
+                while (i < (len(array1) - 1)):
+                    while (array1[i] == array1[i + 1]):
+                        array1[i] = array1[i] * 2
+                        array1[i + 1] = 0
+                        break
+                    i = i + 1
+                return array1
+
+            tile1 = row_merger(row)
+            tile2 = add_tiles(tile1)
+            tile3 = row_merger(tile2)
+            return tile3
+
+
+        storeha = merge_right(store_a)
+        storehu = merge_right(store_b)
+        storehi = merge_right(store_c)
+        storehe = merge_right((store_d))
+
+        store1 = [storeha[0], storehu[0], storehi[0], storehe[0]]
+        store2 = [storeha[1], storehu[1], storehi[1], storehe[1]]
+        store3 = [storeha[2], storehu[2], storehi[2], storehe[2]]
+        store4 = [storeha[3], storehu[3], storehi[3], storehe[3]]
+
+        for i in range(0,3):
+            if store1[i]==0:
+                store1[i]=2
+                print("new 2 generated on first row",i,"index")
+                break
+            if store2[i]==0:
+                store2[i]=2
+                print("new 2 generated on second row", i, "index")
+                break
+            if store3[i]==0:
+                store3[i]=2
+                print("new 2 generated on third row", i, "index")
+                break
+            if store4[i]==0:
+                store4[i]=2
+                print("new 2 generated on fourth row", i, "index")
+
+        print(store1, "                            A ---FOR  LEFT SHIFT")
+        print(store2, "                            D ---FOR RIGHT SHIFT")
+        print(store3, "                            W ---FOR UP SHIFT")
+        print(store4, "                            S ---FOR DOWN SHIFT            PRESS C TO LEAVE THE GAME")
+    if button=="c" or button=="C":
+        print("GAME OVER")
+        break
+    for i in range(0,3):
+        if store1[i]==2048:
+            print("CONGRATULATION YOU HAVE WON THE GAME")
+            break
+        if store2[i]==2048:
+            print("CONGRATULATION YOU HAVE WON THE GAME")
+            break
+        if store3[i]==2048:
+            print("CONGRATULATION YOU HAVE WON THE GAME")
+            break
