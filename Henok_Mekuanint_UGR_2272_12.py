@@ -22,8 +22,9 @@ store2=[num5,num6,num7,num8]
 store3=[num9,num10,num11,num12]
 store4=[num13,num14,num15,num16]
 store=[]
-print(store1,"                            A ---FOR  LEFT SHIFT")
-print(store2,"                            D ---FOR RIGHT SHIFT")
+print(store1,"                           A ---FOR  LEFT SHIFT")
+
+print(store2,"                       D ---FOR RIGHT SHIFT")
 print(store3,"                            W ---FOR UP SHIFT")
 print(store4,"                            S ---FOR DOWN SHIFT and               press C TO LEAVE THE GAME")
 button=1
